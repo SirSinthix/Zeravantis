@@ -3,8 +3,14 @@ const toastText = toast.querySelector('span');
 let toastTimer;
 const contactDialog = document.querySelector('#contactDialog');
 const contactForm = document.querySelector('#contactForm');
+const mailAppLink = document.querySelector('.mail-app-link');
 
 document.querySelector('#contactButton').addEventListener('click', () => contactDialog.showModal());
+mailAppLink.addEventListener('click', () => {
+  const subject = encodeURIComponent(document.querySelector('#contactSubject').value.trim());
+  const message = encodeURIComponent(document.querySelector('#contactMessage').value.trim());
+  mailAppLink.href = `mailto:zeravantis@gmail.com?subject=${subject}&body=${message}`;
+});
 document.querySelector('#contactClose').addEventListener('click', () => contactDialog.close());
 contactDialog.addEventListener('click', (event) => {
   if (event.target === contactDialog) contactDialog.close();
